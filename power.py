@@ -29,33 +29,38 @@ SUBTEXT  = "#6b7290"
 RED      = "#ff3355"
 
 # ─────────────────────────────────────────────
-#  PERFORMANCE TWEAKS  (pmset -c = AC power only)
+#  PERFORMANCE TWEAKS
+#  -a = all power states (battery + AC)
+#  -c = AC only
 # ─────────────────────────────────────────────
 GAMING_COMMANDS = [
-    "pmset -c lowpowermode 0",
-    "pmset -c sleep 0",
-    "pmset -c disksleep 0",
-    "pmset -c displaysleep 0",
-    "pmset -c powernap 0",
+    "pmset -a lowpowermode 0",
+    "pmset -a sleep 0",
+    "pmset -a disksleep 0",
+    "pmset -a displaysleep 0",
+    "pmset -a powernap 0",
+    "pmset -a disablesleep 1",   # keeps running with lid closed
     "pmset -c womp 0",
     "pmset -c tcpkeepalive 0",
-    "pmset -c ttyskeepawake 1",
+    "pmset -a ttyskeepawake 1",
 ]
 
 RESTORE_COMMANDS = [
-    "pmset -c lowpowermode 0",
-    "pmset -c sleep 10",
-    "pmset -c disksleep 10",
-    "pmset -c displaysleep 5",
-    "pmset -c powernap 1",
+    "pmset -a lowpowermode 0",
+    "pmset -a sleep 1",
+    "pmset -a disksleep 10",
+    "pmset -a displaysleep 2",
+    "pmset -a powernap 1",
+    "pmset -a disablesleep 0",
     "pmset -c womp 1",
     "pmset -c tcpkeepalive 1",
-    "pmset -c ttyskeepawake 0",
+    "pmset -a ttyskeepawake 0",
 ]
 
 OPTIMIZATIONS = [
     ("Low Power Mode",       "Disabled — full chip speed"),
     ("Sleep",                "Blocked — system stays awake"),
+    ("Lid Close",            "Ignored — runs with lid shut"),
     ("Disk Sleep",           "Disabled — instant I/O"),
     ("Display Sleep",        "Disabled — no interruptions"),
     ("Power Nap",            "Off — no background wake"),
